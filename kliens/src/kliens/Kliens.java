@@ -8,15 +8,14 @@ public class Kliens {
 
     public static void main(String[] args) throws Exception {
         String MACHINE = "localhost";
-		// String MACHINE = "127.0.0.1";
-		// String MACHINE = "::1";
-		int PORT = 12345;
-		try (
-			Socket s = new Socket(MACHINE, PORT);
-			Scanner sc = new Scanner(s.getInputStream());
-			PrintWriter pw = new PrintWriter(s.getOutputStream());
-		) {
-                        /*pw.println("6");
+        // String MACHINE = "127.0.0.1";
+        // String MACHINE = "::1";
+        int PORT = 12345;
+        try (
+                Socket s = new Socket(MACHINE, PORT);
+                Scanner sc = new Scanner(s.getInputStream());
+                PrintWriter pw = new PrintWriter(s.getOutputStream());) {
+            /*pw.println("6");
 			pw.flush();
                         
 			pw.println("2");
@@ -24,23 +23,23 @@ public class Kliens {
                         
                         pw.println("a");
 			pw.flush();*/
-                        
-                        System.out.println("Fájlolvasás jön");
-                        sendFromFile(pw);
 
-                        while(sc.hasNextInt()){
-                            Integer valasz = sc.nextInt();
-                            System.out.println(valasz);
-                        }
-		}
+            System.out.println("Fajlolvasas jon");
+            sendFromFile(pw);
+
+            while (sc.hasNextInt()) {
+                Integer valasz = sc.nextInt();
+                System.out.println(valasz);
+            }
+        }
     }
-    
-    public static void sendFromFile(PrintWriter pw){
+
+    public static void sendFromFile(PrintWriter pw) {
         List<Integer> list = new ArrayList<Integer>();
         File file = new File("file.txt");
         BufferedReader reader = null;
-        
-        System.out.println("Fájlolvasás");
+
+        System.out.println("Fajlolvasas");
         try {
             reader = new BufferedReader(new FileReader(file));
             String text = null;
@@ -60,11 +59,10 @@ public class Kliens {
         }
         System.out.println(list);
         list.forEach((n) -> pw.println(n));
+        pw.flush();
         //pw.println(list);
-        System.out.println("Kliens vár...");
+        System.out.println("Kliens var...");
         pw.println("a");
-
-        
+        pw.flush();
     }
-    
 }

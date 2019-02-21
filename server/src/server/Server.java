@@ -21,11 +21,11 @@ public class Server {
 				PrintWriter pw = new PrintWriter(s.getOutputStream());
 			) {
 				while(sc.hasNextInt()){
-					Integer nr = sc.nextInt();
+                                    Integer nr = sc.nextInt();
 
 					//if (nr != 0) {
-						tmp.add(toInt(nr));	
-                                                System.out.println(nr);
+                                    tmp.add(toInt(nr));	
+                                    System.out.println(nr);
 					//} else {
 						//answer(tmp, pw);
 					//}
@@ -46,6 +46,6 @@ public class Server {
 	}
 
 	public static Integer toInt(Integer nr){
-		return 2*nr+1;
+            return 2*nr+1;
 	}
 }
